@@ -1,18 +1,18 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+
 import "./App.css";
+import Scores from "./components/Score";
+import Gameplay from "./components/Gameplay";
+import Rules from "./components/Rules";
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  function changeCount() {
-    setCount(count + 2);
-  }
-
   return (
     <>
-      <p className="text-6xl">Rock Paper Scissors</p>
+      <div>
+        <Scores />
+        <Gameplay />
+        <Rules />
+      </div>
     </>
   );
 }
