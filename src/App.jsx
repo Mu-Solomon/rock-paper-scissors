@@ -13,11 +13,11 @@ function App() {
     <>
       <div className="bg-linear-to-b from-[#1f3756ff] to-[#141639ff] h-screen p-5">
         <Scores />
-        {/* <Gameplay /> */}
+        <Gameplay />
         {/* <Picked /> */}
         {/*  <AfterPicking /> */}
         {/* <Rules /> */}
-        <WinorLose />
+        {/* <WinorLose /> */}
         <div className="pt-18">
           <h2 className="text-center text-xl tracking-[4px] font-semibold text-white border w-35 rounded-md mx-auto py-2">
             RULES
