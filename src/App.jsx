@@ -11,15 +11,15 @@ import WinorLose from "./components/WinorLose";
 function App() {
   return (
     <>
-      <div className="bg-linear-to-b from-[#1f3756ff] to-[#141639ff] h-screen p-5">
+      <div className="bg-linear-to-b from-[#1f3756ff] to-[#141639ff] min-h-screen p-5">
         <Scores />
-        <Gameplay />
+        {/* <Gameplay /> */}
         {/* <Picked /> */}
-        {/*  <AfterPicking /> */}
+         <AfterPicking />
         {/* <Rules /> */}
         {/* <WinorLose /> */}
-        <div className="pt-18">
-          <h2 className="text-center text-xl tracking-[4px] font-semibold text-white border w-35 rounded-md mx-auto py-2">
+        <div className="pt-18 sm:pt-0">
+          <h2 className="text-center text-xl tracking-[4px] font-semibold text-white border w-35 rounded-md mx-auto sm:mr-0 py-2">
             RULES
           </h2>
         </div>
