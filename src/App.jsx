@@ -15,9 +15,9 @@ function App() {
         <Scores />
         {/* <Gameplay /> */}
         {/* <Picked /> */}
-         <AfterPicking />
+        {/* <AfterPicking /> */}
         {/* <Rules /> */}
-        {/* <WinorLose /> */}
+        <WinorLose />
         <div className="pt-18 sm:pt-0">
           <h2 className="text-center text-xl tracking-[4px] font-semibold text-white border w-35 rounded-md mx-auto sm:mr-0 py-2">
             RULES
