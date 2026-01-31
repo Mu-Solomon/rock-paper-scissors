@@ -6,10 +6,12 @@ export default function Gameplay(props) {
           ({ name, mainColour, wrapperColour, imageSource, id }) => (
             <div
               key={id}
+              style={{ backgroundColor: wrapperColour }}
               className={`bg-[${wrapperColour}] w-32 h-[134px] sm:w-40 sm:h-42 rounded-full hover:cursor-pointer`}
               onClick={() => props.select(name)}
             >
               <div
+                style={{ backgroundColor: mainColour }}
                 className={`w-32 h-32 sm:w-40  sm:h-40 bg-[${mainColour}] flex justify-center items-center rounded-full`}
               >
                 <div className="bg-[#d8d5d5] rounded-full w-22 h-[93px]  sm:w-30 sm:h-[126px] flex items-end ">
