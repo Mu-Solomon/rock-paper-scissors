@@ -8,6 +8,8 @@ import Picked from "./components/Picked";
 import AfterPicking from "./components/AfterPicking";
 import WinorLose from "./components/WinorLose";
 
+import { motion, AnimatePresence } from "framer-motion";
+
 function App() {
   //Opening and closing the Game Rules
   const [isRulesOpen, setIsRulesOpen] = useState(false);
