@@ -1,6 +1,4 @@
 export default function WinorLose({ selected, playAgain }) {
-  console.log(selected);
-
   return (
     <>
       {" "}

@@ -108,8 +108,6 @@ function App() {
     );
   }
   if (hasUserSelected !== null && selected.host == null) {
-    console.log(resultText);
-
     return (
       <div className="bg-linear-to-b from-[#1f3756ff] to-[#141639ff] min-h-screen p-5">
         <Scores score={score} />
@@ -168,26 +166,6 @@ function App() {
       </div>
     );
   }
-
-  return (
-    <>
-      <div className="bg-linear-to-b from-[#1f3756ff] to-[#141639ff] min-h-screen p-5">
-        <Scores />
-
-        {showResult && <WinorLose />}
-
-        <div className="pt-18 sm:pt-0">
-          <h2
-            onClick={toggleRules}
-            className="text-center text-xl tracking-[4px] font-semibold text-white border w-35 rounded-md mx-auto sm:mr-0 py-2 hover:cursor-pointer"
-          >
-            RULES
-          </h2>
-        </div>
-        {isRulesOpen && <Rules toggleRules={toggleRules} />}
-      </div>
-    </>
-  );
 }
 
 export default App;
