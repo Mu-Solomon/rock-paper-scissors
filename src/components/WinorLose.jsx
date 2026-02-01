@@ -1,4 +1,4 @@
-export default function WinorLose({ selected }) {
+export default function WinorLose({ selected, playAgain }) {
   console.log(selected);
 
   return (
@@ -38,9 +38,12 @@ export default function WinorLose({ selected }) {
 
         <div className="hidden sm:block sm:mb-2 sm:mt-30">
           <h2 className="text-center text-white font-bold text-6xl ">
-            YOU WIN{" "}
+            {selected.result.toUpperCase()}{" "}
           </h2>
-          <p className="text-center bg-white w-56 rounded-md p-3.5 mx-auto mt-5 text-md font-semibold text-[#565469ff] tracking-widest">
+          <p
+            onClick={playAgain}
+            className="text-center bg-white w-56 rounded-md p-3.5 mx-auto mt-5 text-md font-semibold text-[#565469ff] tracking-widest hover:cursor-pointer"
+          >
             {" "}
             PLAY AGAIN
           </p>
@@ -79,8 +82,13 @@ export default function WinorLose({ selected }) {
       </div>
       {/* Results */}
       <div className="sm:hidden">
-        <h2 className="text-center text-white font-bold text-6xl ">YOU WIN </h2>
-        <p className="text-center bg-white w-56 rounded-md p-3.5 mx-auto mt-5 text-md font-semibold text-[#565469ff] tracking-widest">
+        <h2 className="text-center text-white font-bold text-6xl ">
+          {selected.result.toUpperCase()}
+        </h2>
+        <p
+          onClick={playAgain}
+          className="text-center bg-white w-56 rounded-md p-3.5 mx-auto mt-5 text-md font-semibold text-[#565469ff] tracking-widest hover:cursor-pointer"
+        >
           {" "}
           PLAY AGAIN
         </p>

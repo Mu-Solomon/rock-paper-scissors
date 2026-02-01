@@ -39,12 +39,10 @@ function App() {
     },
   ]);
 
-  const [selected, setSelected] = useState({
-    user: null,
-    host: null,
-    result: "",
-  });
+  const [selected, setSelected] = useState({ user: null, host: null });
   const [showResult, setShowResult] = useState(false);
+  const [resultText, setResultText] = useState("");
+  const [score, setScore] = useState(0);
 
   useEffect(() => {
     if (selected.host !== null) {
@@ -54,44 +52,46 @@ function App() {
 
       if (selected.user === null || selected.host === null) {
         setSelected({ user: null, host: null, result: "" });
-      }
-
-      if (selected.user.name === selected.host.name) {
-        setSelected({ ...selected, result: "draw" });
-      }
-
-      if (
+      } else if (selected.user.name === selected.host.name) {
+        setSelected({ ...selected, result: " draw" });
+      } else if (
         (selected.user.name === "rock" && selected.host.name === "scissor") ||
         (selected.user.name === "scissor" && selected.host.name === "paper") ||
         (selected.user.name === "paper" && selected.host.name === "rock")
       ) {
-        setSelected({ ...selected, result: "win" });
+        setScore(score + 1);
+        setSelected({ ...selected, result: "you win" });
       } else {
-        setSelected({ ...selected, result: "lose" });
+        setScore(score - 1);
+        setSelected({ ...selected, result: "you lose" });
       }
 
       return () => clearTimeout(timer);
     }
-  });
+  }, [selected.host]);
 
   const select = (itemName) => {
     const selectedItem = items.find((item) => item.name === itemName);
+    setSelected({ user: selectedItem, host: null });
 
     const selectedHostItem = items[Math.floor(Math.random() * items.length)];
+    // const selectedHostItem = items[0];
     setTimeout(() => {
-      setSelected({
-        user: selectedItem,
-        host: selectedHostItem,
-      });
+      setSelected({ user: selectedItem, host: selectedHostItem });
     }, 2000);
   };
 
   const hasUserSelected = selected.user;
 
+  const playAgain = () => {
+    setSelected({ user: null, host: null });
+    setShowResult(false);
+  };
+
   if (hasUserSelected === null) {
     return (
       <div className="bg-linear-to-b from-[#1f3756ff] to-[#141639ff] min-h-screen p-5">
-        <Scores />
+        <Scores score={score} />
 
         <Gameplay items={items} select={select} />
 
@@ -108,9 +108,11 @@ function App() {
     );
   }
   if (hasUserSelected !== null && selected.host == null) {
+    console.log(resultText);
+
     return (
       <div className="bg-linear-to-b from-[#1f3756ff] to-[#141639ff] min-h-screen p-5">
-        <Scores />
+        <Scores score={score} />
 
         <Picked selected={selected} />
 
@@ -128,9 +130,13 @@ function App() {
   } else if (selected.host !== null && showResult) {
     return (
       <div className="bg-linear-to-b from-[#1f3756ff] to-[#141639ff] min-h-screen p-5">
-        <Scores />
+        <Scores score={score} />
 
-        <WinorLose selected={selected} />
+        <WinorLose
+          selected={selected}
+          resultText={resultText}
+          playAgain={playAgain}
+        />
 
         <div className="pt-18 sm:pt-0">
           <h2
@@ -146,7 +152,7 @@ function App() {
   } else {
     return (
       <div className="bg-linear-to-b from-[#1f3756ff] to-[#141639ff] min-h-screen p-5">
-        <Scores />
+        <Scores score={score} />
 
         <Picked selected={selected} />
 
